@@ -1,2 +1,2 @@
 https://www.apple.com/itunes/download/win64
-  dir=/tmp/third-parties-fresh-installers/Apple iTunes/
+  dir=/tmp/third-parties-fresh-installers/Apple iTunes
