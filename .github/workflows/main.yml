@@ -1,7 +1,7 @@
 name: Fresh package build
 
 on: 
-  workflow_dispatch:
+  workflow_dispatch
 
 jobs:
   build_pkg:
@@ -9,12 +9,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    
-    - name: Collect and install prerequisites
+
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+        
+    - name: Install prerequisites
       run: |
         set -xe
-        
+        cd /tmp/
+        git clone https://github.com/maaaaz/patchmypcdl.git
+        git clone https://github.com/maaaaz/chocodl.git
+        pip install -r ./patchmypcdl/requirements.txt
 
+    - name: Download files
+      run: |
+        set -xe
+        cd /tmp/
+        python -Wall ./patchmypcdl.py -i "$GITHUB_WORKSPACE/_Resources/patchmypc_inputs.txt"
+        ls -alhR /mnt/third-parties-fresh-installers
+        
     - name: Push to archive.org
       env:   
         SECRET_ARCHIVE_ORG_LOGIN: ${{ secrets.SECRET_ARCHIVE_ORG_LOGIN }}
@@ -23,13 +38,13 @@ jobs:
         set -xe
 
         cd $LIVE_BUILD_IMAGES_DIR
-        /tmp/ia configure --username=$SECRET_ARCHIVE_ORG_LOGIN --password=$SECRET_ARCHIVE_ORG_PASSWORD
+        # /tmp/ia configure --username=$SECRET_ARCHIVE_ORG_LOGIN --password=$SECRET_ARCHIVE_ORG_PASSWORD
 
-        /tmp/ia upload -q $KALI_RELEASE_NAME $KALI_RELEASE_ISO_FNAME --metadata="mediatype:software"
-        /tmp/ia upload -q $KALI_RELEASE_NAME $KALI_RELEASE_LOG_FNAME --metadata="mediatype:texts"
-        /tmp/ia upload -q $KALI_RELEASE_NAME $KALI_RELEASE_ISO_SHA256SUM_FNAME --metadata="mediatype:texts"
+        # /tmp/ia upload -q $KALI_RELEASE_NAME $KALI_RELEASE_ISO_FNAME --metadata="mediatype:software"
+        # /tmp/ia upload -q $KALI_RELEASE_NAME $KALI_RELEASE_LOG_FNAME --metadata="mediatype:texts"
+        # /tmp/ia upload -q $KALI_RELEASE_NAME $KALI_RELEASE_ISO_SHA256SUM_FNAME --metadata="mediatype:texts"
 
-        KALI_RELEASE_NOTES="/tmp/$KALI_RELEASE_NAME-notes.txt"
-        echo "KALI_RELEASE_NOTES=$KALI_RELEASE_NOTES" >> $GITHUB_ENV
-        echo -e "Download the ISO file at https://archive.org/details/$KALI_RELEASE_NAME\n" > $KALI_RELEASE_NOTES
-        cat $KALI_RELEASE_ISO_SHA256SUM_FNAME_PATH >> $KALI_RELEASE_NOTES
+        # KALI_RELEASE_NOTES="/tmp/$KALI_RELEASE_NAME-notes.txt"
+        # echo "KALI_RELEASE_NOTES=$KALI_RELEASE_NOTES" >> $GITHUB_ENV
+        # echo -e "Download the ISO file at https://archive.org/details/$KALI_RELEASE_NAME\n" > $KALI_RELEASE_NOTES
+        # cat $KALI_RELEASE_ISO_SHA256SUM_FNAME_PATH >> $KALI_RELEASE_NOTES
