@@ -18,8 +18,10 @@ jobs:
     - name: Install prerequisites
       run: |
         cd /tmp/
-        echo "FRESH_INSTALLERS_DIR=/tmp/third-parties-fresh-installers" >> $GITHUB_ENV
+        echo "FRESH_INSTALLERS_DIR=/tmp/third-parties-fresh-installers/" >> $GITHUB_ENV
         echo "FRESH_INSTALLERS_ZIP=/tmp/third-parties-fresh-installers.zip" >> $GITHUB_ENV
+        echo "$FRESH_INSTALLERS_DIR"
+        
         mkdir -p "$FRESH_INSTALLERS_DIR"
         
         git clone https://github.com/maaaaz/patchmypcdl.git
