@@ -8,23 +8,22 @@ FirefoxDownloadx64_FR | /tmp/third-parties-fresh-installers/Mozilla Firefox/
 GPUZDownloadPortable | /tmp/third-parties-fresh-installers/GPUZ/
 GreenshotDownload | /tmp/third-parties-fresh-installers/Greenshot/
 HWiNFO64Download | /tmp/third-parties-fresh-installers/HWiNFO64/
-irfanViewx64Download
-KeePassDownload
-Mp3tagDownload
-Notepadx64Download
-VirtualBoxDownload
-PDFSamBasicDownload
-PuTTYx64Download
-qBittorrentDownload_x64
-RufusDownloadPortable
-SysinternalsSuiteDownloadPortable
-TreeSizeFreeDownload
-VLCx64Download
-WinampDownload
-iCloudDownload
-WinSCPDownload
-WireSharkx64Download
-SevenZipEXEx64Download
-Java8X64Download
-OOShutUpDownloadPortable
-ProcessLassox64Download
+irfanViewx64Download | /tmp/third-parties-fresh-installers/Irfan View/
+KeePassDownload | /tmp/third-parties-fresh-installers/KeePass/
+Mp3tagDownload | /tmp/third-parties-fresh-installers/MP3tag/
+Notepadx64Download | /tmp/third-parties-fresh-installers/Notepad++/
+VirtualBoxDownload | /tmp/third-parties-fresh-installers/Oracle VirtualBox/
+PDFSamBasicDownload | /tmp/third-parties-fresh-installers/PDFSam/
+PuTTYx64Download | /tmp/third-parties-fresh-installers/Putty/
+qBittorrentDownload_x64 | /tmp/third-parties-fresh-installers/Qbittorrent/
+RufusDownloadPortable | /tmp/third-parties-fresh-installers/Rufus/
+SysinternalsSuiteDownloadPortable | /tmp/third-parties-fresh-installers/Sysinternals/
+TreeSizeFreeDownload | /tmp/third-parties-fresh-installers/TreeSize/
+VLCx64Download | /tmp/third-parties-fresh-installers/VLC/
+WinampDownload | /tmp/third-parties-fresh-installers/Winamp/
+WinSCPDownload | /tmp/third-parties-fresh-installers/WinSCP/
+WireSharkx64Download | /tmp/third-parties-fresh-installers/Wireshark/
+SevenZipEXEx64Download | /tmp/third-parties-fresh-installers/7zip/
+Java8X64Download | /tmp/third-parties-fresh-installers/Java JRE/
+OOShutUpDownloadPortable | /tmp/third-parties-fresh-installers/OOShutUp/
+ProcessLassox64Download | /tmp/third-parties-fresh-installers/Process Lasso/
