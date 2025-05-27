@@ -33,7 +33,7 @@ jobs:
       run: |
         cd /tmp/
         python -Wall "/tmp/patchmypcdl/patchmypcdl.py" -i "$GITHUB_WORKSPACE/_Resources/patchmypc_inputs.txt"
-        aria2c "$GITHUB_WORKSPACE/_Resources/aria2c_inputs.txt"
+        aria2c --console-log-level error "$GITHUB_WORKSPACE/_Resources/aria2c_inputs.txt"
         
     - name: List files
       run: |
