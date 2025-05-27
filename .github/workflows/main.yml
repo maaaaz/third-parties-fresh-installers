@@ -18,8 +18,11 @@ jobs:
     - name: Install prerequisites
       run: |
         cd /tmp/
-        echo "FRESH_INSTALLERS_DIR=/tmp/third-parties-fresh-installers/" >> $GITHUB_ENV
-        echo "FRESH_INSTALLERS_ZIP=/tmp/third-parties-fresh-installers.zip" >> $GITHUB_ENV
+        FRESH_INSTALLERS_DIR="/tmp/third-parties-fresh-installers/"
+        FRESH_INSTALLERS_ZIP="/tmp/third-parties-fresh-installers.zip"
+        echo "FRESH_INSTALLERS_DIR=$FRESH_INSTALLERS_DIR" >> $GITHUB_ENV
+        echo "FRESH_INSTALLERS_ZIP=$FRESH_INSTALLERS_ZIP" >> $GITHUB_ENV
+        
         echo "$FRESH_INSTALLERS_DIR"
         
         mkdir -p "$FRESH_INSTALLERS_DIR"
