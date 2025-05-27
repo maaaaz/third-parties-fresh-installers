@@ -1,0 +1,34 @@
+AcrobatReaderDCDownload_FR | /mnt/third-parties-fresh-installers/Adobe Reader/
+AudacityDownload | /mnt/third-parties-fresh-installers/Audacity/
+CCleanerDownloadPortable | /mnt/third-parties-fresh-installers/CCleaner/
+Chrome64bitDownload | /mnt/third-parties-fresh-installers/Google Chrome/
+CrystalDiskInfoDownload | /mnt/third-parties-fresh-installers/CrystalDiskInfo/
+CrystalDiskMarkDownload | /mnt/third-parties-fresh-installers/CrystalDiskMark/
+Eraserx64Download | /mnt/third-parties-fresh-installers/Eraser/
+FirefoxDownloadx64_FR | /mnt/third-parties-fresh-installers/Mozilla Firefox/
+GPUZDownloadPortable | /mnt/third-parties-fresh-installers/GPUZ/
+GreenshotDownload | /mnt/third-parties-fresh-installers/Greenshot/
+HWiNFO64Download | /mnt/third-parties-fresh-installers/HWiNFO64/
+irfanViewx64Download
+KeePassDownload
+Mp3tagDownload
+Notepadx64Download
+VirtualBoxDownload
+PDFSamBasicDownload
+PuTTYx64Download
+qBittorrentDownload_x64
+RufusDownloadPortable
+SpeccyDownloadPortable
+SysinternalsSuiteDownloadPortable
+TorBrowserDownloadPortable
+TreeSizeFreeDownload
+VLCx64Download
+WinampDownload
+iCloudDownload
+WinSCPDownload
+WireSharkx64Download
+SevenZipEXEx64Download
+Java8X64Download
+OOShutUpDownloadPortable
+ProcessHackerDownload
+ProcessLassox64Download
