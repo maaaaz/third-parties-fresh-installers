@@ -30,6 +30,7 @@ jobs:
         
     - name: List files
       run: |
+        du -sh "/tmp/third-parties-fresh-installers"
         find "/tmp/third-parties-fresh-installers" -type f
         
     - name: Push to archive.org
