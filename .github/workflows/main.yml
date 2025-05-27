@@ -24,7 +24,6 @@ jobs:
         echo "FRESH_INSTALLERS_ZIP=$FRESH_INSTALLERS_ZIP" >> $GITHUB_ENV
         
         echo "$FRESH_INSTALLERS_DIR"
-        
         mkdir -p "$FRESH_INSTALLERS_DIR"
         
         git clone https://github.com/maaaaz/patchmypcdl.git
@@ -34,9 +33,8 @@ jobs:
     - name: Download files
       run: |
         cd /tmp/
-        python -Wall /tmp/patchmypcdl/patchmypcdl.py -i "$GITHUB_WORKSPACE/_Resources/patchmypc_inputs.txt"
-
-        wget --force-directories -nv "https://www.apple.com/itunes/download/win64" -O "/tmp/third-parties-fresh-installers/Apple iTunes/iTunes64Setup.exe"
+        python -Wall "/tmp/patchmypcdl/patchmypcdl.py" -i "$GITHUB_WORKSPACE/_Resources/patchmypc_inputs.txt"
+        wget --force-directories -nv "https://www.apple.com/itunes/download/win64" -O "$FRESH_INSTALLERS_DIR/Apple iTunes/iTunes64Setup.exe"
         
     - name: List files
       run: |
