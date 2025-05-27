@@ -4,7 +4,6 @@ CCleanerDownloadPortable | /tmp/third-parties-fresh-installers/CCleaner/
 Chrome64bitDownload | /tmp/third-parties-fresh-installers/Google Chrome/
 CrystalDiskInfoDownload | /tmp/third-parties-fresh-installers/CrystalDiskInfo/
 CrystalDiskMarkDownload | /tmp/third-parties-fresh-installers/CrystalDiskMark/
-Eraserx64Download | /tmp/third-parties-fresh-installers/Eraser/
 FirefoxDownloadx64_FR | /tmp/third-parties-fresh-installers/Mozilla Firefox/
 GPUZDownloadPortable | /tmp/third-parties-fresh-installers/GPUZ/
 GreenshotDownload | /tmp/third-parties-fresh-installers/Greenshot/
@@ -18,7 +17,6 @@ PDFSamBasicDownload
 PuTTYx64Download
 qBittorrentDownload_x64
 RufusDownloadPortable
-SpeccyDownloadPortable
 SysinternalsSuiteDownloadPortable
 TorBrowserDownloadPortable
 TreeSizeFreeDownload
@@ -30,5 +28,4 @@ WireSharkx64Download
 SevenZipEXEx64Download
 Java8X64Download
 OOShutUpDownloadPortable
-ProcessHackerDownload
 ProcessLassox64Download
