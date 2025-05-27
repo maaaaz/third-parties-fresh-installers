@@ -17,8 +17,11 @@ jobs:
         
     - name: Install prerequisites
       run: |
-        set -xe
         cd /tmp/
+        echo "FRESH_INSTALLERS_DIR=/tmp/third-parties-fresh-installers" >> $GITHUB_ENV
+        echo "FRESH_INSTALLERS_ZIP=/tmp/third-parties-fresh-installers.zip" >> $GITHUB_ENV
+        mkdir -p "$FRESH_INSTALLERS_DIR"
+        
         git clone https://github.com/maaaaz/patchmypcdl.git
         git clone https://github.com/maaaaz/chocodl.git
         pip install -r ./patchmypcdl/requirements.txt
@@ -32,8 +35,13 @@ jobs:
         
     - name: List files
       run: |
-        du -sh "/tmp/third-parties-fresh-installers"
-        find "/tmp/third-parties-fresh-installers" -type f
+        du -sh "$FRESH_INSTALLERS_DIR"
+        find "$FRESH_INSTALLERS_DIR" -type f | sort
+
+    - name: Create zip
+      run: |
+        zip -r "$FRESH_INSTALLERS_ZIP" "$FRESH_INSTALLERS_DIR"
+        ls -alh "$FRESH_INSTALLERS_ZIP"
         
     - name: Push to archive.org
       env:   
