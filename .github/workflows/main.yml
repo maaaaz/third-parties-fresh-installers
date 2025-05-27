@@ -27,6 +27,8 @@ jobs:
       run: |
         cd /tmp/
         python -Wall /tmp/patchmypcdl/patchmypcdl.py -i "$GITHUB_WORKSPACE/_Resources/patchmypc_inputs.txt"
+
+        wget --force-directories -nv "https://www.apple.com/itunes/download/win64" -O "/tmp/third-parties-fresh-installers/Apple iTunes"
         
     - name: List files
       run: |
