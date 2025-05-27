@@ -27,7 +27,7 @@ jobs:
       run: |
         set -xe
         cd /tmp/
-        python -Wall ./patchmypcdl.py -i "$GITHUB_WORKSPACE/_Resources/patchmypc_inputs.txt"
+        python -Wall /tmp/patchmypcdl/patchmypcdl.py -i "$GITHUB_WORKSPACE/_Resources/patchmypc_inputs.txt"
         ls -alhR /mnt/third-parties-fresh-installers
         
     - name: Push to archive.org
