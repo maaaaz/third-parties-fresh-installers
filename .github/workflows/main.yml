@@ -28,8 +28,8 @@ jobs:
         echo "RELEASE_NAME=$RELEASE_NAME" >> $GITHUB_ENV
         
         FRESH_INSTALLERS_DIR="/tmp/third-parties-fresh-installers/"
-        FRESH_INSTALLERS_ZIP="/tmp/third-parties-fresh-installers.zip"
-        FRESH_INSTALLERS_ZIP_SHA256="/tmp/third-parties-fresh-installers.zip.sha256.txt"
+        FRESH_INSTALLERS_ZIP="/tmp/third-parties-fresh-installers-$(date '+%Y%m%d').zip"
+        FRESH_INSTALLERS_ZIP_SHA256="/tmp/third-parties-fresh-installers-$(date '+%Y%m%d').zip.sha256.txt"
         echo "FRESH_INSTALLERS_DIR=$FRESH_INSTALLERS_DIR" >> $GITHUB_ENV
         echo "FRESH_INSTALLERS_ZIP=$FRESH_INSTALLERS_ZIP" >> $GITHUB_ENV
         echo "FRESH_INSTALLERS_ZIP_SHA256=$FRESH_INSTALLERS_ZIP_SHA256" >> $GITHUB_ENV
@@ -68,7 +68,7 @@ jobs:
       run: |
         cd /tmp/
         ia configure --username=$SECRET_ARCHIVE_ORG_LOGIN --password=$SECRET_ARCHIVE_ORG_PASSWORD
-
+        ia delete $ARCHIVE_ORG_ITEM_NAME --all -H x-archive-keep-old-version:0 
         #ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP --metadata="mediatype:software"
         #ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP_SHA256 --metadata="mediatype:texts"
 
