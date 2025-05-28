@@ -30,7 +30,6 @@ jobs:
         echo "FRESH_INSTALLERS_DIR=$FRESH_INSTALLERS_DIR" >> $GITHUB_ENV
         echo "FRESH_INSTALLERS_ZIP=$FRESH_INSTALLERS_ZIP" >> $GITHUB_ENV
         echo "FRESH_INSTALLERS_ZIP_SHA256=$FRESH_INSTALLERS_ZIP_SHA256" >> $GITHUB_ENV
-        
 
         mkdir -p "$FRESH_INSTALLERS_DIR"
         
@@ -64,9 +63,7 @@ jobs:
         SECRET_ARCHIVE_ORG_LOGIN: ${{ secrets.SECRET_ARCHIVE_ORG_LOGIN }}
         SECRET_ARCHIVE_ORG_PASSWORD: ${{ secrets.SECRET_ARCHIVE_ORG_PASSWORD }}
       run: |
-        set -xe
-
-        cd $LIVE_BUILD_IMAGES_DIR
+        cd /tmp/
         /tmp/ia configure --username=$SECRET_ARCHIVE_ORG_LOGIN --password=$SECRET_ARCHIVE_ORG_PASSWORD
 
         # /tmp/ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP --metadata="mediatype:software"
