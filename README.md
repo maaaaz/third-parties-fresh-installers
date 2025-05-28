@@ -5,6 +5,8 @@ Description
 -----------
 A automatically daily-updated fresh package of common third-party tools which can be downloaded here: https://archive.org/details/commontools
 
+Release information can be found here: https://github.com/maaaaz/third-parties-fresh-installers/releases
+
   
 Interesting resources related to package management
 ---------------------------------------------------
