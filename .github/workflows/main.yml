@@ -3,6 +3,9 @@ name: Fresh package build
 on: 
   workflow_dispatch
 
+permissions:
+  contents: write
+
 jobs:
   build_pkg:
     runs-on: ubuntu-latest
