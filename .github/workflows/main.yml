@@ -26,7 +26,7 @@ jobs:
         
         FRESH_INSTALLERS_DIR="/tmp/third-parties-fresh-installers/"
         FRESH_INSTALLERS_ZIP="/tmp/third-parties-fresh-installers.zip"
-        FRESH_INSTALLERS_ZIP_SHA256="/tmp/third-parties-fresh-installers.zip.sha256"
+        FRESH_INSTALLERS_ZIP_SHA256="/tmp/third-parties-fresh-installers.zip.sha256.txt"
         echo "FRESH_INSTALLERS_DIR=$FRESH_INSTALLERS_DIR" >> $GITHUB_ENV
         echo "FRESH_INSTALLERS_ZIP=$FRESH_INSTALLERS_ZIP" >> $GITHUB_ENV
         echo "FRESH_INSTALLERS_ZIP_SHA256=$FRESH_INSTALLERS_ZIP_SHA256" >> $GITHUB_ENV
@@ -38,7 +38,7 @@ jobs:
         cd /tmp/
         git clone https://github.com/maaaaz/patchmypcdl.git
         git clone https://github.com/maaaaz/chocodl.git
-        pip install -r ./patchmypcdl/requirements.txt
+        pip install -r ./patchmypcdl/requirements.txt internetarchive
 
     - name: Download files
       run: |
@@ -64,10 +64,10 @@ jobs:
         SECRET_ARCHIVE_ORG_PASSWORD: ${{ secrets.SECRET_ARCHIVE_ORG_PASSWORD }}
       run: |
         cd /tmp/
-        /tmp/ia configure --username=$SECRET_ARCHIVE_ORG_LOGIN --password=$SECRET_ARCHIVE_ORG_PASSWORD
+        ia configure --username=$SECRET_ARCHIVE_ORG_LOGIN --password=$SECRET_ARCHIVE_ORG_PASSWORD
 
-        # /tmp/ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP --metadata="mediatype:software"
-        # /tmp/ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP_SHA256 --metadata="mediatype:texts"
+        #ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP --metadata="mediatype:software"
+        #ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP_SHA256 --metadata="mediatype:texts"
 
     - name: Create a new Github release
       uses: softprops/action-gh-release@9d7c94cfd0a1f3ed45544c887983e9fa900f0564 #v2.0.4
