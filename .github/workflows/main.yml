@@ -14,17 +14,29 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: "3.12"
+
+    - name: Set up environment
+      run: |
+        cd /tmp/
+        ARCHIVE_ORG_ITEM_NAME="commontools"
+        echo "ARCHIVE_ORG_ITEM_NAME=$ARCHIVE_ORG_ITEM_NAME" >> $GITHUB_ENV
+
+        RELEASE_NAME="$(date '+%Y%m%d')"
+        echo "RELEASE_NAME=$RELEASE_NAME" >> $GITHUB_ENV
+        
+        FRESH_INSTALLERS_DIR="/tmp/third-parties-fresh-installers/"
+        FRESH_INSTALLERS_ZIP="/tmp/third-parties-fresh-installers.zip"
+        FRESH_INSTALLERS_ZIP_SHA256="/tmp/third-parties-fresh-installers.zip.sha256"
+        echo "FRESH_INSTALLERS_DIR=$FRESH_INSTALLERS_DIR" >> $GITHUB_ENV
+        echo "FRESH_INSTALLERS_ZIP=$FRESH_INSTALLERS_ZIP" >> $GITHUB_ENV
+        echo "FRESH_INSTALLERS_ZIP_SHA256=$FRESH_INSTALLERS_ZIP_SHA256" >> $GITHUB_ENV
+        
+
+        mkdir -p "$FRESH_INSTALLERS_DIR"
         
     - name: Install prerequisites
       run: |
         cd /tmp/
-        FRESH_INSTALLERS_DIR="/tmp/third-parties-fresh-installers/"
-        FRESH_INSTALLERS_ZIP="/tmp/third-parties-fresh-installers.zip"
-        echo "FRESH_INSTALLERS_DIR=$FRESH_INSTALLERS_DIR" >> $GITHUB_ENV
-        echo "FRESH_INSTALLERS_ZIP=$FRESH_INSTALLERS_ZIP" >> $GITHUB_ENV
-        
-        mkdir -p "$FRESH_INSTALLERS_DIR"
-        
         git clone https://github.com/maaaaz/patchmypcdl.git
         git clone https://github.com/maaaaz/chocodl.git
         pip install -r ./patchmypcdl/requirements.txt
@@ -40,10 +52,12 @@ jobs:
         du -sh "$FRESH_INSTALLERS_DIR"
         find "$FRESH_INSTALLERS_DIR" -type f | sort
 
-    - name: Create zip
+    - name: Create zip and compute hash
       run: |
         zip -r "$FRESH_INSTALLERS_ZIP" "$FRESH_INSTALLERS_DIR"
         ls -alh "$FRESH_INSTALLERS_ZIP"
+
+        sha256sum --tag "$FRESH_INSTALLERS_ZIP" | tee "$FRESH_INSTALLERS_ZIP_SHA256"
         
     - name: Push to archive.org
       env:   
@@ -53,13 +67,14 @@ jobs:
         set -xe
 
         cd $LIVE_BUILD_IMAGES_DIR
-        # /tmp/ia configure --username=$SECRET_ARCHIVE_ORG_LOGIN --password=$SECRET_ARCHIVE_ORG_PASSWORD
+        /tmp/ia configure --username=$SECRET_ARCHIVE_ORG_LOGIN --password=$SECRET_ARCHIVE_ORG_PASSWORD
 
-        # /tmp/ia upload -q $KALI_RELEASE_NAME $KALI_RELEASE_ISO_FNAME --metadata="mediatype:software"
-        # /tmp/ia upload -q $KALI_RELEASE_NAME $KALI_RELEASE_LOG_FNAME --metadata="mediatype:texts"
-        # /tmp/ia upload -q $KALI_RELEASE_NAME $KALI_RELEASE_ISO_SHA256SUM_FNAME --metadata="mediatype:texts"
+        # /tmp/ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP --metadata="mediatype:software"
+        # /tmp/ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP_SHA256 --metadata="mediatype:texts"
 
-        # KALI_RELEASE_NOTES="/tmp/$KALI_RELEASE_NAME-notes.txt"
-        # echo "KALI_RELEASE_NOTES=$KALI_RELEASE_NOTES" >> $GITHUB_ENV
-        # echo -e "Download the ISO file at https://archive.org/details/$KALI_RELEASE_NAME\n" > $KALI_RELEASE_NOTES
-        # cat $KALI_RELEASE_ISO_SHA256SUM_FNAME_PATH >> $KALI_RELEASE_NOTES
+    - name: Create a new Github release
+      uses: softprops/action-gh-release@9d7c94cfd0a1f3ed45544c887983e9fa900f0564 #v2.0.4
+      with:
+        body_path: ${{ env.FRESH_INSTALLERS_ZIP_SHA256 }}
+        name: ${{ env.RELEASE_NAME }}
+        tag_name: ${{ env.RELEASE_NAME }}
