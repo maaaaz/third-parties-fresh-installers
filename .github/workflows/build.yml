@@ -42,6 +42,7 @@ jobs:
         echo "FRESH_INSTALLERS_HASH_PATH=$FRESH_INSTALLERS_HASH_PATH" >> $GITHUB_ENV
 
         mkdir -p "$FRESH_INSTALLERS_DIR"
+        
         LASTVERSION_VENV_PATH="/tmp/venvlastversion"
         LASTVERSION_VENV_PIP="$LASTVERSION_VENV_PATH/bin/pip"
         LASTVERSION_BIN="$LASTVERSION_VENV_PATH/bin/lastversion"
@@ -65,6 +66,11 @@ jobs:
         python "/tmp/patchmypcdl/patchmypcdl.py" -i "$GITHUB_WORKSPACE/_Resources/patchmypc_inputs.txt"
         python "/tmp/chocodl/chocodl.py" -i "$GITHUB_WORKSPACE/_Resources/choco_inputs.txt"
         aria2c --log-level error --console-log-level error -i "$GITHUB_WORKSPACE/_Resources/aria2c_inputs.txt"
+    
+    - name: Download files from lastversion
+      run: |
+        cd /tmp/
+        $LASTVERSION_BIN -v
 
     - name: Download NirSoft Launcher
       continue-on-error: true
