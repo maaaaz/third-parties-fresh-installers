@@ -10,6 +10,7 @@ Hashes can be found in the release section: https://github.com/maaaaz/third-part
   
 Interesting resources related to third-party tool package management
 --------------------------------------------------------------------
+- https://github.com/dvershinin/lastversion
 - https://github.com/microsoft/winget-pkgs/
 - https://wapt.tranquil.it/store/en
 - https://luti.tranquil.it/
