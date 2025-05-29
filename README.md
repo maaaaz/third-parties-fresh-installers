@@ -1,9 +1,9 @@
-Third parties installers
+Third-parties installers
 ========================
 
 Description
 -----------
-A automatically daily-updated fresh zip package of common third-party tools which can be downloaded here: https://archive.org/details/commontools
+An automatically-daily-updated fresh zip package of common third-party tools which can be downloaded here: https://archive.org/details/commontools
 
 Hashes can be found in the release section: https://github.com/maaaaz/third-parties-fresh-installers/releases
 
