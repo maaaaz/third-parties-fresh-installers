@@ -1,5 +1,4 @@
 AcrobatReaderDCDownload_FR | /tmp/third-parties-fresh-installers/Adobe Reader/
-AudacityDownload | /tmp/third-parties-fresh-installers/Audacity/
 CCleanerDownloadPortable | /tmp/third-parties-fresh-installers/CCleaner/
 Chrome64bitDownload | /tmp/third-parties-fresh-installers/Google Chrome/
 CrystalDiskInfoDownload | /tmp/third-parties-fresh-installers/CrystalDiskInfo/
