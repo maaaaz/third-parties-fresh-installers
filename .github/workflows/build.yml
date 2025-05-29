@@ -42,6 +42,12 @@ jobs:
         echo "FRESH_INSTALLERS_HASH_PATH=$FRESH_INSTALLERS_HASH_PATH" >> $GITHUB_ENV
 
         mkdir -p "$FRESH_INSTALLERS_DIR"
+        LASTVERSION_VENV_PATH="/tmp/venvlastversion"
+        LASTVERSION_VENV_PIP="$LASTVERSION_VENV_PATH/bin/pip"
+        LASTVERSION_BIN="$LASTVERSION_VENV_PATH/bin/lastversion"
+        echo "LASTVERSION_VENV_PATH=$LASTVERSION_VENV_PATH" >> $GITHUB_ENV
+        echo "LASTVERSION_VENV_PIP=$LASTVERSION_VENV_PIP" >> $GITHUB_ENV
+        echo "LASTVERSION_BIN=$LASTVERSION_BIN" >> $GITHUB_ENV
         
     - name: Install prerequisites
       run: |
@@ -50,7 +56,10 @@ jobs:
         git clone https://github.com/maaaaz/chocodl.git
         pip install -r ./patchmypcdl/requirements.txt internetarchive
 
-    - name: Download files
+        python3 -m venv "$LASTVERSION_VENV_PATH"
+        $LASTVERSION_VENV_PIP install lastversion
+
+    - name: Download files from PatchMyPC + Chocolatey + stable definitions
       run: |
         cd /tmp/
         python "/tmp/patchmypcdl/patchmypcdl.py" -i "$GITHUB_WORKSPACE/_Resources/patchmypc_inputs.txt"
