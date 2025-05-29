@@ -1,1 +1,2 @@
 speccy | /tmp/third-parties-fresh-installers/Piriform Speccy/
+veracrypt | /tmp/third-parties-fresh-installers/Veracrypt/
