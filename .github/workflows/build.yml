@@ -30,7 +30,7 @@ jobs:
         FRESH_INSTALLERS_ROOT_DIR="/tmp"
         FRESH_INSTALLERS_DIR="$FRESH_INSTALLERS_ROOT_DIR/third-parties-fresh-installers/"
         FRESH_INSTALLERS_ZIP_FNAME="third-parties-fresh-installers-$RELEASE_NAME.zip"
-        FRESH_INSTALLERS_HASHES_FNAME="third-parties-fresh-installers-$RELEASE_NAME.zip.hashes.txt"
+        FRESH_INSTALLERS_HASHES_FNAME="$FRESH_INSTALLERS_ZIP_FNAME.hashes.txt"
         FRESH_INSTALLERS_ZIP_PATH="$FRESH_INSTALLERS_ROOT_DIR/$FRESH_INSTALLERS_ZIP_FNAME"
         FRESH_INSTALLERS_HASH_PATH="$FRESH_INSTALLERS_ROOT_DIR/$FRESH_INSTALLERS_HASHES_FNAME"
 
@@ -78,12 +78,12 @@ jobs:
         cd /tmp/
         ia configure --username=$SECRET_ARCHIVE_ORG_LOGIN --password=$SECRET_ARCHIVE_ORG_PASSWORD
         ia delete $ARCHIVE_ORG_ITEM_NAME --all -H x-archive-keep-old-version:0 
-        #ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP --metadata="mediatype:software"
-        #ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP_SHA256 --metadata="mediatype:texts"
+        #ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP_PATH --metadata="mediatype:software"
+        ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_HASH_PATH --metadata="mediatype:texts"
 
     - name: Create a new Github release
       uses: softprops/action-gh-release@9d7c94cfd0a1f3ed45544c887983e9fa900f0564 #v2.0.4
       with:
-        body_path: ${{ env.FRESH_INSTALLERS_ZIP_SHA256 }}
+        body_path: ${{ env.FRESH_INSTALLERS_HASH_PATH }}
         name: ${{ env.RELEASE_NAME }}
         tag_name: ${{ env.RELEASE_NAME }}
