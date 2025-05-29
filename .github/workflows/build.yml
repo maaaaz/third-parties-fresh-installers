@@ -106,7 +106,7 @@ jobs:
         cd /tmp/
         ia configure --username=$SECRET_ARCHIVE_ORG_LOGIN --password=$SECRET_ARCHIVE_ORG_PASSWORD
         ia delete $ARCHIVE_ORG_ITEM_NAME --all -H x-archive-keep-old-version:0 
-        #ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP_PATH --metadata="mediatype:software"
+        ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP_PATH --metadata="mediatype:software"
         ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_HASH_PATH --metadata="mediatype:texts"
 
     - name: Create a new Github release
