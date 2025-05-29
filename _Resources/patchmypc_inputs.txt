@@ -7,7 +7,6 @@ FirefoxDownloadx64_FR | /tmp/third-parties-fresh-installers/Mozilla Firefox/
 GPUZDownloadPortable | /tmp/third-parties-fresh-installers/GPUZ/
 GreenshotDownload | /tmp/third-parties-fresh-installers/Greenshot/
 HWiNFO64Download | /tmp/third-parties-fresh-installers/HWiNFO64/
-irfanViewx64Download | /tmp/third-parties-fresh-installers/Irfan View/
 KeePassDownload | /tmp/third-parties-fresh-installers/KeePass/
 Mp3tagDownload | /tmp/third-parties-fresh-installers/MP3tag/
 Notepadx64Download | /tmp/third-parties-fresh-installers/Notepad++/
