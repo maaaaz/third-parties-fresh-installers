@@ -3,13 +3,13 @@ Third parties installers
 
 Description
 -----------
-A automatically daily-updated fresh package of common third-party tools which can be downloaded here: https://archive.org/details/commontools
+A automatically daily-updated fresh zip package of common third-party tools which can be downloaded here: https://archive.org/details/commontools
 
-Release information can be found here: https://github.com/maaaaz/third-parties-fresh-installers/releases
+Hashes can be found in the release section: https://github.com/maaaaz/third-parties-fresh-installers/releases
 
   
-Interesting resources related to package management
----------------------------------------------------
+Interesting resources related to third-party tool package management
+--------------------------------------------------------------------
 - https://github.com/microsoft/winget-pkgs/
 - https://wapt.tranquil.it/store/en
 - https://luti.tranquil.it/
@@ -20,4 +20,3 @@ Interesting resources related to package management
 Copyright and license
 ---------------------
 - All trademarks, service marks, trade names and product names appearing on this repository are the property of their respective owners
-  
