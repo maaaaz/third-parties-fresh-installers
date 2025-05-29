@@ -57,11 +57,12 @@ jobs:
         python "/tmp/chocodl/chocodl.py" -i "$GITHUB_WORKSPACE/_Resources/choco_inputs.txt"
         aria2c --log-level error --console-log-level error -i "$GITHUB_WORKSPACE/_Resources/aria2c_inputs.txt"
 
-        # NirSoft
-        mkdir -p /tmp/nirsoftlauncher/
+    - name: Download NirSoft Launcher
+      run: |
+        cd /tmp/
+        mkdir -p "/tmp/nirsoftlauncher/" "/tmp/third-parties-fresh-installers/NirSoft/"
         wget -nv --referer='https://launcher.nirsoft.net/' --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36' 'https://download.nirsoft.net/nirsoft_package_enc_1.30.19.zip'
         unzip -P 'nirsoft9876$' -d /tmp/nirsoftlauncher/ nirsoft_package_enc_1.30.19.zip
-        mkdir "/tmp/third-parties-fresh-installers/NirSoft/"
         cd "/tmp/nirsoftlauncher/"
         zip -r "/tmp/third-parties-fresh-installers/NirSoft/NirSoft.zip" .
         
