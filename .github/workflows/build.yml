@@ -58,6 +58,7 @@ jobs:
         aria2c --log-level error --console-log-level error -i "$GITHUB_WORKSPACE/_Resources/aria2c_inputs.txt"
 
     - name: Download NirSoft Launcher
+      continue-on-error: true
       run: |
         cd /tmp/
         mkdir -p "/tmp/nirsoftlauncher/" "/tmp/third-parties-fresh-installers/NirSoft/"
