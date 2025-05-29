@@ -26,13 +26,20 @@ jobs:
 
         RELEASE_NAME="$(date '+%Y%m%d')"
         echo "RELEASE_NAME=$RELEASE_NAME" >> $GITHUB_ENV
-        
-        FRESH_INSTALLERS_DIR="/tmp/third-parties-fresh-installers/"
-        FRESH_INSTALLERS_ZIP="/tmp/third-parties-fresh-installers-$(date '+%Y%m%d').zip"
-        FRESH_INSTALLERS_ZIP_SHA256="/tmp/third-parties-fresh-installers-$(date '+%Y%m%d').zip.sha256.txt"
+
+        FRESH_INSTALLERS_ROOT_DIR="/tmp"
+        FRESH_INSTALLERS_DIR="$FRESH_INSTALLERS_ROOT_DIR/third-parties-fresh-installers/"
+        FRESH_INSTALLERS_ZIP_FNAME="third-parties-fresh-installers-$RELEASE_NAME.zip"
+        FRESH_INSTALLERS_HASHES_FNAME="third-parties-fresh-installers-$RELEASE_NAME.zip.hashes.txt"
+        FRESH_INSTALLERS_ZIP_PATH="$FRESH_INSTALLERS_ROOT_DIR/$FRESH_INSTALLERS_ZIP_FNAME"
+        FRESH_INSTALLERS_HASH_PATH="$FRESH_INSTALLERS_ROOT_DIR/$FRESH_INSTALLERS_HASHES_FNAME"
+
+        echo "FRESH_INSTALLERS_ROOT_DIR=$FRESH_INSTALLERS_ROOT_DIR" >> $GITHUB_ENV
         echo "FRESH_INSTALLERS_DIR=$FRESH_INSTALLERS_DIR" >> $GITHUB_ENV
-        echo "FRESH_INSTALLERS_ZIP=$FRESH_INSTALLERS_ZIP" >> $GITHUB_ENV
-        echo "FRESH_INSTALLERS_ZIP_SHA256=$FRESH_INSTALLERS_ZIP_SHA256" >> $GITHUB_ENV
+        echo "FRESH_INSTALLERS_ZIP_FNAME=$FRESH_INSTALLERS_ZIP_FNAME" >> $GITHUB_ENV
+        echo "FRESH_INSTALLERS_HASHES_FNAME=$FRESH_INSTALLERS_HASHES_FNAME" >> $GITHUB_ENV
+        echo "FRESH_INSTALLERS_ZIP_PATH=$FRESH_INSTALLERS_ZIP_PATH" >> $GITHUB_ENV
+        echo "FRESH_INSTALLERS_HASH_PATH=$FRESH_INSTALLERS_HASH_PATH" >> $GITHUB_ENV
 
         mkdir -p "$FRESH_INSTALLERS_DIR"
         
@@ -56,10 +63,12 @@ jobs:
 
     - name: Create zip and compute hash
       run: |
-        zip -r "$FRESH_INSTALLERS_ZIP" "$FRESH_INSTALLERS_DIR"
-        ls -alh "$FRESH_INSTALLERS_ZIP"
+        zip -r "$FRESH_INSTALLERS_ZIP_PATH" "$FRESH_INSTALLERS_DIR"
+        ls -alh "$FRESH_INSTALLERS_ZIP_PATH"
 
-        sha256sum --tag "$FRESH_INSTALLERS_ZIP" | tee "$FRESH_INSTALLERS_ZIP_SHA256"
+        cd $FRESH_INSTALLERS_ROOT_DIR
+        sha1sum --tag "$FRESH_INSTALLERS_ZIP_FNAME" | tee "$FRESH_INSTALLERS_HASH_PATH"
+        sha256sum --tag "$FRESH_INSTALLERS_ZIP_FNAME" | tee -a "$FRESH_INSTALLERS_HASH_PATH"
         
     - name: Push to archive.org
       env:   
@@ -69,8 +78,8 @@ jobs:
         cd /tmp/
         ia configure --username=$SECRET_ARCHIVE_ORG_LOGIN --password=$SECRET_ARCHIVE_ORG_PASSWORD
         ia delete $ARCHIVE_ORG_ITEM_NAME --all -H x-archive-keep-old-version:0 
-        ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP --metadata="mediatype:software"
-        ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP_SHA256 --metadata="mediatype:texts"
+        #ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP --metadata="mediatype:software"
+        #ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_ZIP_SHA256 --metadata="mediatype:texts"
 
     - name: Create a new Github release
       uses: softprops/action-gh-release@9d7c94cfd0a1f3ed45544c887983e9fa900f0564 #v2.0.4
