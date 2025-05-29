@@ -70,7 +70,8 @@ jobs:
     - name: Download files from lastversion
       run: |
         cd /tmp/
-        $LASTVERSION_BIN -v
+        mkdir -p "/tmp/third-parties-fresh-installers/Microsoft PowerToys/" && cd "/tmp/third-parties-fresh-installers/Microsoft PowerToys/"
+        $LASTVERSION_BIN --assets --formal --filter "PowerToysSetup-.*-x64.exe" download "https://github.com/microsoft/PowerToys/"
 
     - name: Download NirSoft Launcher
       continue-on-error: true
