@@ -1,9 +1,9 @@
 name: Fresh package build
 
 on: 
-  #workflow_dispatch
-  schedule:
-    - cron:  '10 02 * * *'
+  workflow_dispatch
+  #schedule:
+  #  - cron:  '10 02 * * *'
 
 permissions:
   contents: write
@@ -71,6 +71,8 @@ jobs:
     
     - name: Download files with lastversion
       continue-on-error: true
+      env:
+       GITHUB_API_TOKEN: ${{ secrets.SECRET_TOKEN_GITHUB_FOR_LASTVERSION }}
       run: |
         cd /tmp/
         mkdir -p "/tmp/third-parties-fresh-installers/Microsoft PowerToys/" && cd "/tmp/third-parties-fresh-installers/Microsoft PowerToys/"
