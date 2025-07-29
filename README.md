@@ -17,6 +17,12 @@ Interesting resources related to third-party tool package management
 - https://github.com/Mohrpheus78/Evergreen
 - https://github.com/endoleg/app-install
 
+Some inspirations for this project
+-----------------------------------
+- https://www.hirensbootcd.org/download/
+- https://www.liberkey.com/
+- https://www.nirsoft.net/
+- https://learn.microsoft.com/en-us/sysinternals/
   
 Copyright and license
 ---------------------
