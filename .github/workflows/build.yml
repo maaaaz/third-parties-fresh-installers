@@ -1,9 +1,9 @@
 name: Fresh package build
 
 on: 
-  workflow_dispatch
-  #schedule:
-  #  - cron:  '10 02 * * *'
+  #workflow_dispatch
+  schedule:
+    - cron:  '10 02 * * *'
 
 permissions:
   contents: write
@@ -85,6 +85,7 @@ jobs:
         cd /tmp/
         mkdir -p "/tmp/third-parties-fresh-installers/Microsoft PowerToys/" && cd "/tmp/third-parties-fresh-installers/Microsoft PowerToys/"
         $LASTVERSION_BIN --assets --formal --filter "PowerToysUserSetup-.*-x64.exe" download "https://github.com/microsoft/PowerToys/"
+        $LASTVERSION_BIN --assets --formal --filter "wsl.*.x64.msi" download "https://github.com/microsoft/WSL/"
 
     - name: Download NirSoft Launcher
       continue-on-error: true
