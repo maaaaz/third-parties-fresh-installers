@@ -85,6 +85,8 @@ jobs:
         cd /tmp/
         mkdir -p "/tmp/third-parties-fresh-installers/Microsoft PowerToys/" && cd "/tmp/third-parties-fresh-installers/Microsoft PowerToys/"
         $LASTVERSION_BIN --assets --formal --filter "PowerToysUserSetup-.*-x64.exe" download "https://github.com/microsoft/PowerToys/"
+
+        mkdir -p "/tmp/third-parties-fresh-installers/Microsoft WSL/" && cd "/tmp/third-parties-fresh-installers/Microsoft WSL/"
         $LASTVERSION_BIN --assets --formal --filter "wsl.*.x64.msi" download "https://github.com/microsoft/WSL/"
 
     - name: Download NirSoft Launcher
