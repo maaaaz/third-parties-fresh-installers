@@ -1,9 +1,9 @@
 name: Fresh package build
 
 on: 
-  #workflow_dispatch
-  schedule:
-    - cron:  '10 02 * * *'
+  workflow_dispatch
+  #schedule:
+  #  - cron:  '10 02 * * *'
 
 permissions:
   contents: write
