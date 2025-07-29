@@ -62,11 +62,19 @@ jobs:
         python3 -m venv "$LASTVERSION_VENV_PATH"
         $LASTVERSION_VENV_PIP install lastversion
 
-    - name: Download files from PatchMyPC + Chocolatey + stable definitions
+    - name: Download files from PatchMyPC
       run: |
         cd /tmp/
         python "/tmp/patchmypcdl/patchmypcdl.py" -i "$GITHUB_WORKSPACE/_Resources/patchmypc_inputs.txt"
+        
+    - name: Download files from Chocolatey
+      run: |
+        cd /tmp/
         python "/tmp/chocodl/chocodl.py" -i "$GITHUB_WORKSPACE/_Resources/choco_inputs.txt"
+        
+    - name: Download files from stable definitions with aria2c
+      run: |
+        cd /tmp/
         aria2c --log-level error --console-log-level error -i "$GITHUB_WORKSPACE/_Resources/aria2c_inputs.txt"
     
     - name: Download files with lastversion
