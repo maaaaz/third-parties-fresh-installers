@@ -1,2 +1,8 @@
 https://www.apple.com/itunes/download/win64
   dir=/tmp/third-parties-fresh-installers/Apple iTunes
+
+https://downloads.sourceforge.net/project/crystaldiskinfo/9.6.3/CrystalDiskInfo9_6_3.zip
+  dir=/tmp/third-parties-fresh-installers/CrystalDiskInfo
+
+https://downloads.sourceforge.net/project/crystaldiskmark/8.0.6/CrystalDiskMark8_0_6.zip
+  dir=/tmp/third-parties-fresh-installers/CrystalDiskMark
