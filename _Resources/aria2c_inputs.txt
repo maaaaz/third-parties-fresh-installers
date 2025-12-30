@@ -6,6 +6,3 @@ https://downloads.sourceforge.net/project/crystaldiskinfo/9.6.3/CrystalDiskInfo9
 
 https://downloads.sourceforge.net/project/crystaldiskmark/8.0.6/CrystalDiskMark8_0_6.zip
   dir=/tmp/third-parties-fresh-installers/CrystalDiskMark
-
-https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/143.0.1-1/librewolf-143.0.1-1-windows-x86_64-portable.zip
-  dir=/tmp/third-parties-fresh-installers/Librewolf
