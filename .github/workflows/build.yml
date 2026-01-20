@@ -90,7 +90,7 @@ jobs:
         $LASTVERSION_BIN --assets --formal --filter "wsl.*.x64.msi" download "https://github.com/microsoft/WSL/"
 
         mkdir -p "/tmp/third-parties-fresh-installers/Librewolf/" && cd "/tmp/third-parties-fresh-installers/Librewolf/"
-        $LASTVERSION_BIN --assets --formal --filter "(.*)-windows-x86_64-portable.zip$" download "https://gitlab.com/librewolf-community/browser/bsys6/"
+        $LASTVERSION_BIN --assets --formal --filter "(.*)-windows-x86_64-portable.zip$" download "https://codeberg.org/librewolf/bsys6/releases"
 
     - name: Download NirSoft Launcher
       continue-on-error: true
