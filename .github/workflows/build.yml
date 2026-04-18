@@ -128,7 +128,7 @@ jobs:
         ia upload -q $ARCHIVE_ORG_ITEM_NAME $FRESH_INSTALLERS_HASH_PATH --metadata="mediatype:texts"
 
     - name: Create a new Github release
-      uses: softprops/action-gh-release@9d7c94cfd0a1f3ed45544c887983e9fa900f0564 #v2.0.4
+      uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda #v3.0.0
       with:
         body_path: ${{ env.FRESH_INSTALLERS_HASH_PATH }}
         name: ${{ env.RELEASE_NAME }}
